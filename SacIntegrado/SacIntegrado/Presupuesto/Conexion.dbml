@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sac" EntityNamespace="SacIntegrado.Presupuesto" ContextNamespace="SacIntegrado.Presupuesto" Class="ConexionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GOYO-UTSJR;Initial Catalog=sac;Integrated Security=True" SettingsObjectName="SacIntegrado.Properties.Settings" SettingsPropertyName="sacConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Recurso" Member="Recurso">
+    <Type Name="Recurso">
+      <Column Name="idRecurso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="ClavePresupuestal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AnioAplica" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SaldoInicial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SaldoFin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleado" Member="Empleado">
+    <Type Name="Empleado">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="idCategoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActividadPoa" Member="ActividadPoa">
+    <Type Name="ActividadPoa">
+      <Column Name="idActPoa" Type="System.Int32" DbType="Int" IsPrimaryKey="true" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorFuncional" Member="ClasificadorFuncional">
+    <Type Name="ClasificadorFuncional">
+      <Column Name="idClasifFuncional" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="Clave" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="PersonaRegistro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorProgramatico" Member="ClasificadorProgramatico">
+    <Type Name="ClasificadorProgramatico">
+      <Column Name="idClasificadorPro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Clave" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="personaRegistro" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CuentaEnc" Member="CuentaEnc">
+    <Type Name="CuentaEnc">
+      <Column Name="IdCuenta" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cuenta" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Padre" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TipoCuenta" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Hoja" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Status" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Periodo" Member="Periodo">
+    <Type Name="Periodo">
+      <Column Name="idPeriodo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartidaProyecto" Member="PartidaProyecto">
+    <Type Name="PartidaProyecto">
+      <Column Name="idCtaProy" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCuenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idPeriodo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="saldoInicial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFin" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Departamento" Member="Departamento">
+    <Type Name="Departamento">
+      <Column Name="idDepto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NombreDepto" Type="System.String" DbType="VarChar(90)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Proyecto" Member="Proyecto">
+    <Type Name="Proyecto">
+      <Column Name="idProyecto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idResponsable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idRecurso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idsOtrosClasificadores" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDepto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idActPoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idClasifFuncional" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idClasifProgramatico" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="anioAplica" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="justificacion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sac" Class="pruebaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GOYO-UTSJR;Initial Catalog=sac;Integrated Security=True" SettingsObjectName="SacIntegrado.Properties.Settings" SettingsPropertyName="sacConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Usuarios" Member="Usuarios">
+    <Type Name="Usuarios">
+      <Column Name="idUsuario" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="nick" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorFuncional" Member="ClasificadorFunc">
+    <Type Name="ClasificadorFunc">
+      <Column Name="idClasifFuncional" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="personaRegistro" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorProg" Member="ClasificadorProg">
+    <Type Name="ClasificadorProg">
+      <Column Name="idClasificadorPro" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="clave" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="personaRegistro" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

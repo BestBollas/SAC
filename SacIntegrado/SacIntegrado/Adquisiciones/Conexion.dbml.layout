@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Conexion">
+  <DataContextMoniker Name="/ConexionDataContext" />
+  <nestedChildShapes>
+    <classShape Id="515a2686-af2a-4754-8059-f81b13ae5086" absoluteBounds="2.75, 0.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ConexionDataContext/Proyecto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7a55d4f3-f64b-4648-9f03-4c836dd2f7b8" absoluteBounds="2.765, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1a66e21-60f5-4af9-87af-a1ac2d4d9b4e" absoluteBounds="0.5, 3.25, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/ConexionDataContext/Producto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="35cd90af-898d-4331-8792-599a5b54de06" absoluteBounds="0.51500000000000012, 3.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="978ca4fa-57ca-4250-b53a-3172ba508fd4" absoluteBounds="6, 0.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/ConexionDataContext/RequiEnc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f12b1eb1-8723-4d84-945f-f1366d4993a0" absoluteBounds="6.015, 0.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 1.76044840494792); (6 : 1.76044840494792)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionDataContext/Proyecto/Proyecto_RequiEnc" />
+      <nodes>
+        <classShapeMoniker Id="515a2686-af2a-4754-8059-f81b13ae5086" />
+        <classShapeMoniker Id="978ca4fa-57ca-4250-b53a-3172ba508fd4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1677ca0a-04de-4b56-9e58-b0e34de182ad" absoluteBounds="0.5, 0.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ConexionDataContext/RequiDet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b2b487d-f245-44c6-add4-17635fd2712b" absoluteBounds="0.51500000000000012, 1.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.5 : 3.25); (1.5 : 2.78049967447917)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionDataContext/Producto/Producto_RequiDet" />
+      <nodes>
+        <classShapeMoniker Id="e1a66e21-60f5-4af9-87af-a1ac2d4d9b4e" />
+        <classShapeMoniker Id="1677ca0a-04de-4b56-9e58-b0e34de182ad" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6 : 0.71875); (2.5 : 0.71875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionDataContext/RequiEnc/RequiEnc_RequiDet" />
+      <nodes>
+        <classShapeMoniker Id="978ca4fa-57ca-4250-b53a-3172ba508fd4" />
+        <classShapeMoniker Id="1677ca0a-04de-4b56-9e58-b0e34de182ad" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="2d81d842-a990-4357-85a2-ec4b7c85c103" absoluteBounds="4.125, 5.25, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/ConexionDataContext/Comprador" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fa60801a-b95e-4ca1-8a79-a0a2966b0fe4" absoluteBounds="4.14, 5.71, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="24c73755-dd2b-4900-9ca7-ac36f316021d" absoluteBounds="6.875, 4.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ConexionDataContext/Empleado" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c074a0f-87d7-4130-a130-bd8ad5c2cdfa" absoluteBounds="6.89, 5.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.875 : 5.84699625651042); (6.125 : 5.84699625651042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ConexionDataContext/Empleado/Empleado_Comprador" />
+      <nodes>
+        <classShapeMoniker Id="24c73755-dd2b-4900-9ca7-ac36f316021d" />
+        <classShapeMoniker Id="2d81d842-a990-4357-85a2-ec4b7c85c103" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.4375 : 4.75); (7.4375 : 4.38621256510417)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionDataContext/Empleado/Empleado_RequiEnc" />
+      <nodes>
+        <classShapeMoniker Id="24c73755-dd2b-4900-9ca7-ac36f316021d" />
+        <classShapeMoniker Id="978ca4fa-57ca-4250-b53a-3172ba508fd4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="9df1ded1-8ba5-4243-abca-b9f2e6c8aa76" absoluteBounds="3.125, 3.25, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ConexionDataContext/Departamento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66402582-aa1f-4c4c-869f-773011f46cde" absoluteBounds="3.1399999999999997, 3.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.9375 : 3.25); (3.9375 : 2.64589680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConexionDataContext/Departamento/Departamento_Proyecto" />
+      <nodes>
+        <classShapeMoniker Id="9df1ded1-8ba5-4243-abca-b9f2e6c8aa76" />
+        <classShapeMoniker Id="515a2686-af2a-4754-8059-f81b13ae5086" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

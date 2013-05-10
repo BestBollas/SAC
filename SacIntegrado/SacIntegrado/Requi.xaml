@@ -1,0 +1,107 @@
+﻿<Page
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="SAC.Requi"
+Title="Requisicion">
+	<ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+    <Grid Width="Auto" Height="Auto">
+		
+		<Grid Margin="0,0,0,40.96" Width="Auto" MinWidth="1007.96" Height="Auto" MinHeight="554.96">
+			<!--CONTENIDO-->
+                <!--<Image Height="98" Source="Logo.jpg" HorizontalAlignment="Right" Margin="0,44,54,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="285" />
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Web;component/FondoSAC.png" />
+                </Grid.Background>-->
+				<Menu VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="0,38,0,0">
+					<Menu.Background>
+						<LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+							<GradientStop Color="#FF4A92E8" Offset="0.25"/>
+							<GradientStop Color="#FF0F73D6" Offset="0.25"/>
+							<GradientStop Color="#FF4B8BD8" Offset="0.8"/>
+							<GradientStop Color="#FF95B7E0" Offset="1"/>
+						</LinearGradientBrush>
+					</Menu.Background>
+                    <MenuItem Header="Inicio" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="14" FontWeight="Normal">
+                        <MenuItem Header="Página Principal" HorizontalAlignment="Left"  VerticalAlignment="Top" Click="menuPrincipal_Click" Foreground="Black"/>
+                    </MenuItem>
+
+                    <MenuItem Header="Presupuesto" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="14" FontWeight="Normal">
+                        <MenuItem Header="Menu Opción 1" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                        <MenuItem Header="Menu Opción 2" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                    </MenuItem>
+
+                    <MenuItem Header="Adquisiciones" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="14" FontWeight="Normal">
+                        <MenuItem Header="Catalogos" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black">
+							<MenuItem Header="Productos" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+							<MenuItem Header="Proveedores" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+						</MenuItem>
+                        <MenuItem Header="Requisiciones" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black">
+                            <MenuItem Header="Nueva" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                            <MenuItem Header="Autorización de Requi" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+                            <MenuItem Header="Recepción" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+							<MenuItem Header="Atención" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+						</MenuItem>
+						<MenuItem Header="Busquedas" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+						<MenuItem Header="Reportes" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                    </MenuItem>
+
+                    <MenuItem Header="Tesorería" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="14" FontWeight="Normal">
+                        <MenuItem Header="Menu Uno" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                        <MenuItem Header="Menu Dos" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                    </MenuItem>
+
+                    <MenuItem Header="Incidencias" HorizontalAlignment="Left"  VerticalAlignment="Top" FontSize="14" FontWeight="Normal">
+                        <MenuItem Header="MenuItem2" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                        <MenuItem Header="Menu" HorizontalAlignment="Left"  VerticalAlignment="Top" Foreground="Black"/>
+                    </MenuItem>
+
+                </Menu>
+				<Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<Label Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold"/>
+				<Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,57.966,0" VerticalAlignment="Top" FontWeight="Bold" MouseDown="menuCerrarSesion_Click"/>
+				<Label Content="Solicitud de Requisición" HorizontalAlignment="Right" Margin="0,86.5,404.966,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+				<Label Content="Folio Requisición" HorizontalAlignment="Left" Margin="34.5,144,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<Label Content="Proyecto Presupuestal" HorizontalAlignment="Left" Margin="34.5,186,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<Label Content="Fecha de Elaboración" HorizontalAlignment="Right" Margin="0,144,179.466,0" VerticalAlignment="Top"/>
+				<Label Content="Depto. Beneficiado" HorizontalAlignment="Left" Margin="34.5,235.5,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<Label Content="Razón o Motivo&#xd;&#xa;(Requisición)" HorizontalAlignment="Left" Margin="34.5,324,0,360.08" d:LayoutOverrides="Height" FontWeight="Bold"/>
+				<Label Content="Requerido (Fecha)" HorizontalAlignment="Right" Margin="0,186,195.809,0" VerticalAlignment="Top"/>
+				<DatePicker HorizontalAlignment="Right" Margin="0,144,8,0" VerticalAlignment="Top"/>
+				<DatePicker HorizontalAlignment="Right" Margin="0,186,8,0" VerticalAlignment="Top"/>
+				<Label Content="Observaciones/Notas&#xd;&#xa;(Requisición)" HorizontalAlignment="Right" Margin="0,324,336.966,360.08" d:LayoutOverrides="Height" FontWeight="Bold"/>
+				<DataGrid Margin="34.5,0,23.96,108.5" VerticalAlignment="Bottom" Height="188.5"/>
+				<Label Content="0000" HorizontalAlignment="Left" Margin="216,144,0,0" VerticalAlignment="Top"/>
+				<ComboBox Margin="216,186,336.966,0" VerticalAlignment="Top"/>
+				<ComboBox Margin="216,235.5,336.966,0" VerticalAlignment="Top"/>
+				<TextBox Margin="216,324,483.5,360.08" TextWrapping="Wrap" Text="¿Por qué?"/>
+				<TextBox HorizontalAlignment="Right" Margin="0,324,23.96,360.08" TextWrapping="Wrap" Text="¿Algo qué comentar?" Width="292.5"/>
+				<CheckBox Content="Habilitar" HorizontalAlignment="Right" Margin="0,0,372.132,340.12" VerticalAlignment="Bottom"/>
+				<Label Content="Producto" HorizontalAlignment="Left" Margin="34.5,282,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<TextBox HorizontalAlignment="Left" Margin="108.506,282,0,0" TextWrapping="Wrap" Text="Teclee el nombre o código del Producto para filtrar" VerticalAlignment="Top" Width="288.077"/>
+				<Label Content="Unidad de Medida" HorizontalAlignment="Left" Margin="416.163,282,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<Label Content="????" HorizontalAlignment="Left" Margin="547.908,282,0,0" VerticalAlignment="Top" Width="42.02"/>
+				<Label Content="Cantidad" HorizontalAlignment="Right" Margin="0,282,310.138,0" VerticalAlignment="Top" FontWeight="Bold"/>
+				<TextBox HorizontalAlignment="Right" Margin="0,282,162.329,0" TextWrapping="Wrap" Text="Número de productos" VerticalAlignment="Top" Width="139.347"/>
+				<Button Content="Limpiar" HorizontalAlignment="Left" Margin="67.5,0,0,318.16" VerticalAlignment="Bottom" Width="75"/>
+				<Button Content="Grabar" HorizontalAlignment="Left" Margin="202.5,0,0,318.16" VerticalAlignment="Bottom" Width="75"/>
+				<Button Content="Cancelar" HorizontalAlignment="Left" Margin="339,0,0,318.16" VerticalAlignment="Bottom" Width="75"/>
+				<Button Content="Salir" HorizontalAlignment="Right" Margin="0,0,23.96,318.16" VerticalAlignment="Bottom" Width="75"/>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SAC;component/FondoSAC.png" />
+                </Grid.Background>
+            </Grid>
+		
+		<Grid Margin="0,726,0,0" Width="Auto" Height="Auto" MinHeight="40.96"><!--Background="#FF0800FF">-->
+			<!--PIE-->
+			<Grid.Background>
+        		<LinearGradientBrush EndPoint="0.345,1.357" StartPoint="0.345,0.048">
+        			<GradientStop Color="#FF0D006E" Offset="0"/>
+        			<GradientStop Color="White" Offset="1"/>
+        		</LinearGradientBrush>
+        	</Grid.Background>
+		</Grid>
+		
+    </Grid>
+	</ScrollViewer>
+</Page>

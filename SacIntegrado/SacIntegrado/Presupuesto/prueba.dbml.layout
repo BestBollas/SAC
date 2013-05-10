@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="prueba">
+  <DataContextMoniker Name="/pruebaDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f75fa0ad-27a9-409f-96c6-bc5a9c92f22e" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/pruebaDataContext/Usuarios" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71d683a4-e023-4597-bf71-141a76e7bd29" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="72e57356-2338-4ba6-a506-9b412d4c892d" absoluteBounds="2.875, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/pruebaDataContext/ClasificadorFunc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a42880c4-0e5a-4950-b09f-513f272935df" absoluteBounds="2.8899999999999997, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbe0d26b-3238-469f-82d9-6296281dccbe" absoluteBounds="5.25, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/pruebaDataContext/ClasificadorProg" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba46387c-c687-4439-997e-6a46ab90197f" absoluteBounds="5.265, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

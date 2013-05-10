@@ -1,0 +1,249 @@
+﻿<Page x:Class="SacIntegrado.OficiosComision.AsignaPresupOficioComi"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      
+	Title="AsignaPresupOficioComi">
+
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid x:Name="contenedor" Width="Auto" Height="758.96" >
+
+            <Grid  Margin="0,0,0,40.96" Width="Auto" MinWidth="1117.96" MinHeight="554.96" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <!--<Grid.Background>
+                    <ImageBrush ImageSource="/SAC;component/FondoSAC.png" />
+                </Grid.Background>-->
+                <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="-2,38,2,0">
+                </Menu>
+                <Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="lblusuario" Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,0,60,684.04" VerticalAlignment="Bottom" FontWeight="Bold" MouseDown="cerrarSesion" />
+                <StackPanel Height="Auto" VerticalAlignment="Bottom" Width="Auto" Margin="0,0,2,0">
+                    <Grid Background="Transparent" Height="Auto" Width="Auto">
+                        <!--Oficios-->
+                        <Expander Header="Oficios Pendientes" Margin="20,480,0,0" VerticalAlignment="Top" Expanded="expandOfiPendientes" x:Name="expOfiPendientes" Collapsed="collaExpOfiPend" HorizontalAlignment="Left" Width="1252">
+                            <DataGrid Margin="0" VerticalAlignment="Top" Height="147" HorizontalAlignment="Left" Width="1245" x:Name="dtgOficosPen" AutoGenerateColumns="False" SelectionChanged="dtgOficosPen_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Oficio"/>
+                                    <DataGridTextColumn Binding="{Binding personaComisionada}" Header="Comisionado"/>
+                                    <DataGridTextColumn Binding="{Binding fechaInicio}" Header="Fecha Inicio"/>
+                                    <DataGridTextColumn Binding="{Binding fechaTermino}" Header="Fecha Termino"/>
+                                    <DataGridTextColumn Binding="{Binding empresa}" Header="Empresa/Lugar"/>
+                                    <DataGridTextColumn Binding="{Binding CostoEstimado}" Header="Costo Estimado"/>
+                                    <DataGridTextColumn Binding="{Binding idautoPresup}" Header="Asignación de Viaticos"/>
+                                    <DataGridTextColumn Binding="{Binding idjefeInmediato}" Header="Autorización Jefe Inmediato"/>
+                                    <DataGridTextColumn Binding="{Binding idjefeArea}" Header="Autorización Jefe Área"/>
+                                    <DataGridTextColumn Binding="{Binding idresponsableProy}" Header="Autorización Resp. Proy"/>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Expander>
+                        <!--Oficios-->
+                        <Expander Header="Oficios Por Pagar" Margin="147,480,0,0" VerticalAlignment="Top" Height="165" x:Name="expOfixPagar" Collapsed="collaExpOfixPagar" Expanded="expOfixPagarEvent" IsExpanded="True" HorizontalAlignment="Left" Width="1112">
+                            <DataGrid HorizontalAlignment="Left" Margin="0" Width="1110" AutoGenerateColumns="False" x:Name="dtgOficiosxPagar" SelectionChanged="dtgOficiosxPagar_SelectionChanged">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Oficio"/>
+                                    <DataGridTextColumn Binding="{Binding personaComisionada}" Header="Comisionado"/>
+                                    <DataGridTextColumn Binding="{Binding fechaInicio}" Header="Fecha Inicio"/>
+                                    <DataGridTextColumn Binding="{Binding fechaTermino}" Header="Fecha Termino"/>
+                                    <DataGridTextColumn Binding="{Binding empresa}" Header="Empresa/Lugar"/>
+                                    <DataGridTextColumn Binding="{Binding CostoEstimado}" Header="Costo Estimado"/>
+                                    <DataGridTextColumn Binding="{Binding idautoPresup}" Header="Asignación de Viaticos"/>
+                                    <DataGridTextColumn Binding="{Binding idjefeInmediato}" Header="Autorización Jefe Inmediato"/>
+                                    <DataGridTextColumn Binding="{Binding idjefeArea}" Header="Autorización Jefe Área"/>
+                                    <DataGridTextColumn Binding="{Binding idresponsableProy}" Header="Autorización Resp. Proy"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Expander>
+                        <!--Oficios-->
+                        <Grid x:Name="gAutorizacion" Height="655.46" VerticalAlignment="Bottom" >
+                            <Label VerticalAlignment="Top" Content="Asignación Presupuestal" HorizontalAlignment="Left" Margin="421,1,0,0" FontSize="18" FontFamily="Gadugi" BorderThickness="0" Width="531" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold" Background="White" BorderBrush="#FFFF0202"/>
+                            <Label Content="Folio" Margin="44,51,1139,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Fecha de Elaboración" Margin="263,51,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="P. Comisionada" Margin="44,80,1091,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Proyecto Presupuestal" Margin="44,115,1175,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Depto. Beneficiado" Margin="44,151,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="Objetivos de la Comisión" Margin="44,296,0,0" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Observaciones" Margin="605,296,0,0" FontWeight="Bold" VerticalAlignment="Top" RenderTransformOrigin="0.458,-0.692" HorizontalAlignment="Left" Width="92" />
+                            <TextBox Margin="214,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" HorizontalAlignment="Left" Width="506" Height="22" x:Name="solicitante" IsEnabled="True" KeyUp="empleados"  />
+                            <Label Content="0000" Margin="100,51,982,0" VerticalAlignment="Top" x:Name="folio" />
+                            <Label Content="00/00/0000" Margin="426,53,621,0" VerticalAlignment="Top" d:LayoutOverrides="Width" x:Name="fechaElab" />
+                            <CheckBox Content="Habilitar" Margin="1114,303,52,0" VerticalAlignment="Top" x:Name="chckbHabObser" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="214,118,0,0" x:Name="proyectPresup" VerticalAlignment="Top" Width="506" IsEnabled="True" KeyUp="proyecto" />
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="214,154,0,0" x:Name="dptoBenef" VerticalAlignment="Top" Width="506" IsEnabled="True" />
+                            <Label Content="Empresa/Organización" HorizontalAlignment="Left" Margin="45,184,0,0" VerticalAlignment="Top"/>
+                            <TextBox x:Name="txtEmpresa" HorizontalAlignment="Left" Height="23" Margin="214,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="506"/>
+                            <Label Content="Estado:" HorizontalAlignment="Left" Margin="45,226,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Transporte:" HorizontalAlignment="Left" Margin="44,260,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Tipo Comisión:" HorizontalAlignment="Left" Margin="442,260,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Acompañiante:" HorizontalAlignment="Left" Margin="767,260,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="24" Margin="990,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="211" x:Name="txtacompa"/>
+                        </Grid>
+                        <Label Content="Fecha Inicio" HorizontalAlignment="Left" Margin="770,62,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Fecha Termino" HorizontalAlignment="Left" Margin="768,104,0,0" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="fechInicio" HorizontalAlignment="Left" Margin="989,63,235,0" VerticalAlignment="Top" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="0,2,2,2" RenderTransformOrigin="0.5,0.5" FontFamily="Arial" TextOptions.TextHintingMode="Fixed" TextOptions.TextFormattingMode="Display" FontStretch="UltraExpanded">
+                            <DatePicker.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                    <SkewTransform AngleY="0" AngleX="0"/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </DatePicker.RenderTransform>
+                        </DatePicker>
+                        <DatePicker x:Name="fechTermino" HorizontalAlignment="Left" Margin="989,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.931,0.5" FontStretch="SemiCondensed"/>
+                        <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="214,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="506" KeyUp="estado"/>
+                        <Label Content="Horario que Comprende la Comision de:" HorizontalAlignment="Left" Margin="761,169,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txthrInicio" HorizontalAlignment="Left" Height="23" Margin="989,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+                        <Label Content="hrs.     a:" HorizontalAlignment="Left" Margin="1030,171,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txthrFin" HorizontalAlignment="Left" Height="23" Margin="1084,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+                        <Label Content="hrs. " HorizontalAlignment="Left" Margin="1131,171,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Horario del evento:" HorizontalAlignment="Left" Margin="762,217,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txthrInicioEvent" HorizontalAlignment="Left" Height="23" Margin="989,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+                        <Label Content="hrs.     a:" HorizontalAlignment="Left" Margin="1030,217,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="txthrFinEvent" HorizontalAlignment="Left" Height="23" Margin="1084,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="42"/>
+                        <Label Content="hrs. " HorizontalAlignment="Left" Margin="1131,217,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="214,258,0,0" VerticalAlignment="Top" Width="174" x:Name="cmbTransporte"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="544,258,0,0" VerticalAlignment="Top" Width="175" x:Name="cmbTipo" RenderTransformOrigin="3.708,-5.727"/>
+                        <TextBox HorizontalAlignment="Left" Height="71" Margin="214,303,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="333" x:Name="txtObje"/>
+                        <TextBox HorizontalAlignment="Left" Height="71" Margin="717,303,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="347" x:Name="txtObserva"/>
+                        <ListView HorizontalAlignment="Left" Height="100" Margin="216,143,0,0" VerticalAlignment="Top" Width="503" x:Name="lwProyecto" SelectionChanged="lwProyecto_SelectionChanged" Visibility="Collapsed"/>
+                        <ListView HorizontalAlignment="Left" Height="100" Margin="214,245,0,0" VerticalAlignment="Top" Width="504" x:Name="lwEstados" SelectionChanged="lwEstados_SelectionChanged" Visibility="Collapsed"/>
+                        <Button Content="Guardar" HorizontalAlignment="Left" Margin="145,410,0,0" VerticalAlignment="Top" Width="75" Click="grabarOficio" IsEnabled="False"/>
+                        <Button Content="Seguimiento" HorizontalAlignment="Left" Margin="451,410,0,0" VerticalAlignment="Top" Width="97" IsEnabled="True" Click="Button_Click_1" x:Name="btnSegi"/>
+                        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="249,410,0,0" VerticalAlignment="Top" Width="75" x:Name="btnCancelar" Click="Email"/>
+                        <Button Content="Limpiar" HorizontalAlignment="Left" Margin="351,410,0,0" VerticalAlignment="Top" Width="75" Click="btnLimpiar" IsEnabled="False" x:Name="buttonLimpiar"/>
+                        <Button Content="Asignar Viaticos" HorizontalAlignment="Left" Margin="575,410,0,0" VerticalAlignment="Top" Width="128" Click="asigViaticos" IsEnabled="False" x:Name="btnAsig"/>
+                        <Button Content="Imprimir Oficios Comision" HorizontalAlignment="Left" Margin="727,410,0,0" VerticalAlignment="Top" Width="164" IsEnabled="False" x:Name="btnImpOfico"/>
+                        <Button Content="Imprimir Informe Comision" HorizontalAlignment="Left" Margin="919,410,0,0" VerticalAlignment="Top" Width="165" IsEnabled="False" x:Name="btnInformComisi"/>
+                        <Button Content="Pago Viatico" HorizontalAlignment="Left" Margin="31,410,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.467,0.4" x:Name="btnPagoViatico" Click="btnPagoViatico_Click" Visibility="Collapsed"/>
+                    </Grid>
+                </StackPanel>
+                <ListView HorizontalAlignment="Left" Height="100" Margin="215,168,0,0" VerticalAlignment="Top" Width="502" x:Name="lwEmpleados" SelectionChanged="lwEmpleados_SelectionChanged" Visibility="Collapsed">
+                </ListView>
+                <!--CONTENIDO-->
+                <!--POPUP de Oficios por Pagar-->
+                <Popup x:Name="pagoViaticos" StaysOpen="True" HorizontalAlignment="Stretch" VerticalAlignment="Center"   Placement="Center" MaxWidth="1000" IsOpen="False">
+                    <Border Height="530" Width="704">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="LightBlue" Offset="1"/>
+                                <GradientStop Color="LightBlue" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Grid Margin="7,6,0,10" Background="White" HorizontalAlignment="Left" Width="688">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Pago de Viaticos" Margin="272,0,252,0" VerticalAlignment="Top" Height="42" FontSize="18" FontStretch="Condensed" FontStyle="Oblique" TextOptions.TextFormattingMode="Display" FontWeight="Bold"/>
+                            <Label Content="X" HorizontalAlignment="Left" Margin="655,0,0,0" VerticalAlignment="Top" FontWeight="Light" FontFamily="Ravie" FontSize="14" RenderTransformOrigin="0.533,0.5" Height="29" MouseDown="CerrarPopupPago" MouseEnter="Label_MouseEnter_1" MouseLeave="Label_MouseLeave_1" x:Name="lblCerrarPago" FontStretch="ExtraCondensed" FontStyle="Italic" TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" Width="33"/>
+                            <Label Content="Folio:" HorizontalAlignment="Left" Margin="0,57,0,0" VerticalAlignment="Top"/>
+                            <Label Content="----" HorizontalAlignment="Left" Margin="41,57,0,0" VerticalAlignment="Top" x:Name="lblfolioPago"/>
+                            <Label Content="--" HorizontalAlignment="Left" Margin="221,57,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.45,8.962" x:Name="lblComisionadoPago"/>
+                            <Label Content="Comisionado:" HorizontalAlignment="Left" Margin="134,57,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="18" Margin="108,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="301" x:Name="txtclasifiPago" KeyUp="txtclasifiPago_KeyUp"/>
+                            <Label Content="Clasificador:" HorizontalAlignment="Left" Margin="0,130,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Concepto:" HorizontalAlignment="Left" Margin="0,153,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="18" Margin="108,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="301" x:Name="txtConceptoPago"/>
+                            <Label Content="Folio de Entrega:" HorizontalAlignment="Left" Margin="0,263,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="18" Margin="109,242,0,0" TextWrapping="Wrap" Text="Es un Combo" VerticalAlignment="Top" Width="301" x:Name="txtMedioEntrega"/>
+                            <Label Content="Observaciones:" HorizontalAlignment="Left" Margin="1,180,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="48" Margin="109,185,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="301" x:Name="txtObservaPago"/>
+                            <DataGrid HorizontalAlignment="Left" Margin="14,330,0,0" VerticalAlignment="Top" Height="127" Width="650" AutoGenerateColumns="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Viatico"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Monto"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Status"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Partida"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Cuenta Cargo"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Cuenta Abono"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Fecha Comprometido"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Clasificador"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Medio de Entrega"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Folio Entrega"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Fecha de Entrega"/>
+                                    <DataGridTextColumn Binding="{Binding NoOficios}" Header="Movimiento Comprometido"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button Content="Limpiar" HorizontalAlignment="Left" Margin="574,126,0,0" VerticalAlignment="Top" Width="75" x:Name="btnLimpipop2" />
+                            <Button Content="Grabar" HorizontalAlignment="Left" Margin="464,126,0,0" VerticalAlignment="Top" Width="75" x:Name="btnGrabapop2" RenderTransformOrigin="0.453,0.433" />
+                            <Button Content="Concluir Pago" HorizontalAlignment="Left" Margin="75,467,0,0" VerticalAlignment="Top" Width="101" x:Name="btnCancelarpop2" />
+                            <Button Content="Generar Movimiento" HorizontalAlignment="Left" Margin="464,242,0,0" VerticalAlignment="Top" Width="138" x:Name="btnSubirArchivo" RenderTransformOrigin="0.479,0.533" />
+                            <Label Content="Medio de Entrega:" HorizontalAlignment="Left" Margin="0,238,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.474,0.462" x:Name="lblRuta" />
+                            <Label Content="Fecha de Entrega: " HorizontalAlignment="Left" Margin="0,292,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="19" Margin="109,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="301" x:Name="txtFolioEntrega"/>
+                            <Label Content="Proyecto:" HorizontalAlignment="Left" Margin="0,82,0,0" VerticalAlignment="Top"/>
+                            <Label Content="----" HorizontalAlignment="Left" Margin="102,107,0,0" VerticalAlignment="Top" x:Name="lblResponsablePago"/>
+                            <Label Content="Responsable:" HorizontalAlignment="Left" Margin="0,106,0,0" VerticalAlignment="Top"/>
+                            <Label Content="----" HorizontalAlignment="Left" Margin="60,83,0,0" VerticalAlignment="Top" x:Name="lblProyectoPago"/>
+                            <DatePicker HorizontalAlignment="Left" Margin="112,294,0,0" VerticalAlignment="Top"  BorderThickness="0" VerticalContentAlignment="Center" Padding="1" FontStretch="Condensed" Height="26" x:Name="dpFechaEntrega"/>
+                            <Button Content="Impreción Vale Gasolina" HorizontalAlignment="Left" Margin="258,467,0,0" VerticalAlignment="Top" Width="167"/>
+                            <Button Content="Impreción Vale Efectivo" HorizontalAlignment="Left" Margin="497,467,0,0" VerticalAlignment="Top" Width="167"/>
+                            <ListView HorizontalAlignment="Left" Height="100" Margin="108,151,0,0" VerticalAlignment="Top" Width="301" x:Name="lwClasiPago" Visibility="Collapsed" SelectionChanged="lwClasiPago_SelectionChanged">
+                            </ListView>
+                        </Grid>
+                    </Border>
+                </Popup>
+                <!--Termina el Popup oficos por pagar-->
+                <!--Inico del popup-->
+                <Popup x:Name="Viaticos" StaysOpen="True" HorizontalAlignment="Stretch" VerticalAlignment="Center"   Placement="Center" MaxWidth="1000">
+                    <Border Height="387" Width="680">
+                        <Border.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="LightBlue" Offset="1"/>
+                                <GradientStop Color="LightBlue" Offset="0"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Grid Margin="5,5,0,10" Background="White" HorizontalAlignment="Left" Width="670">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Content="Asignación de Viaticos" Margin="270,10,257,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Oficio:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="48,54,0,0" VerticalAlignment="Top" x:Name="lblNoOficio"/>
+                            <Label Content="Comisionado:" HorizontalAlignment="Left" Margin="93,54,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Label:" HorizontalAlignment="Left" Margin="170,54,0,0" VerticalAlignment="Top" x:Name="lblComisionado"/>
+                            <Label Content="Cuenta:---" HorizontalAlignment="Left" Margin="295,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,0.462"/>
+                            <Label Content="Saldo Proyecto" HorizontalAlignment="Left" Margin="450,54,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Proyecto:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top"/>
+                            <Label Content="Label" HorizontalAlignment="Left" Margin="77,80,0,0" VerticalAlignment="Top" x:Name="lblProyecto"/>
+                            <Label Content="Clasificador:" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="24"/>
+                            <ComboBox HorizontalAlignment="Left" Margin="109,135,0,0" VerticalAlignment="Top" Width="289" Height="19" x:Name="cmbViaticos" />
+                            <Label Content="Viaticos:" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="24"/>
+                            <Label Content="Monto:" HorizontalAlignment="Left" Margin="418,135,0,0" VerticalAlignment="Top"/>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="513,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" x:Name="txtMonto"/>
+                            <Button Content="Limpiar" HorizontalAlignment="Left" Margin="419,182,0,0" VerticalAlignment="Top" Width="75"/>
+                            <Button Content="Grabar/Actualizar" HorizontalAlignment="Left" Margin="499,182,0,0" VerticalAlignment="Top" Width="134" Click="adDataG"/>
+                            <Button Content="Notificar a Comisionado" HorizontalAlignment="Left" Margin="251,337,0,0" Width="162" Height="30" VerticalAlignment="Top" Click="notificar"/>
+                            <Label Content="Observaciones:" HorizontalAlignment="Left" Margin="9,154,0,0" VerticalAlignment="Top" FontStretch="Condensed"/>
+                            <Label Content="X" HorizontalAlignment="Left" Margin="645,1,-7,0" VerticalAlignment="Top" x:Name="lblCerrarPopup" FontWeight="ExtraBlack" FontFamily="Stylin' BRK Original" FontSize="16" RenderTransformOrigin="1.941,0.321" Height="35" Width="32" TextOptions.TextFormattingMode="Display"  MouseDown="cambiarColor" MouseUp="cerrarSesionPopup" />
+                            <DataGrid Margin="9,230,11,0" VerticalAlignment="Top" Height="102" x:Name="dtgViaticos" AutoGenerateColumns="False" SelectionChanged="dtgViaticos_SelectionChanged" IsEnabled="False">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Viatico" Binding ="{Binding Path=viatico}"/>
+                                    <DataGridTextColumn Header="Monto" Binding ="{Binding Path=monto}"/>
+                                    <DataGridTextColumn Header="Status" Binding ="{Binding Path=status}"/>
+                                    <DataGridTextColumn Header="Partida" Binding ="{Binding Path=partida}"/>
+                                    <DataGridTextColumn Header="Fecha Comprometido" Binding ="{Binding Path=fechCompro}"/>
+                                    <DataGridTextColumn Header="Clasificador" Binding ="{Binding Path=nomPartida}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <TextBox HorizontalAlignment="Left" Height="20" Margin="109,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289" x:Name="txtObservaViaticos"/>
+                            <TextBox HorizontalAlignment="Left" Height="19" Margin="109,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289" x:Name="txtClasifi" KeyUp="clasificadores"/>
+                            <ListView HorizontalAlignment="Left" Height="82" Margin="109,130,0,0" VerticalAlignment="Top" Width="289" x:Name="lwclasifi" SelectionChanged="lwclasifi_SelectionChanged"/>
+                            <Label Content="Total:" HorizontalAlignment="Left" Margin="541,341,0,0" VerticalAlignment="Top" Foreground="Red" x:Name="lblTotal"/>
+                        </Grid>
+                    </Border>
+                </Popup>
+                <!--Ventana Emergente FIN-->
+            </Grid>
+
+            <Grid Margin="0,717,0,0" Width="Auto" MinWidth="1117.96" Height="Auto" MinHeight="40.96" Background="#FF0B004D">
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
+

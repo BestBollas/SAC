@@ -1,0 +1,15 @@
+﻿<Page x:Class="SacIntegrado.Adquisiciones.ReportComite"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:rep="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      mc:Ignorable="d" 
+	Title="ReportComite" Loaded="loadReport" >
+
+    <Grid Margin="0,0,-1228,-503" >
+        <WindowsFormsHost>
+            <rep:ReportViewer x:Name="repComite"/>
+        </WindowsFormsHost>
+    </Grid>
+</Page>

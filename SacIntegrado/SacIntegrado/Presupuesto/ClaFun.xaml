@@ -1,0 +1,72 @@
+﻿<Page x:Class="SacIntegrado.ClaFun"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+     	Title="ClaFun">
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto" >
+        <Grid Width="Auto" Height="Auto">
+
+            <Grid Margin="0,0,0,40.96" Width="Auto" MinWidth="1007.96" Height="Auto" MinHeight="554.96">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.102*"/>
+                    <RowDefinition Height="0.898*"/>
+                </Grid.RowDefinitions>
+                <!--CONTENIDO-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.424*"/>
+                    <ColumnDefinition Width="0.576*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <!--<Image Height="98" Source="Logo.jpg" HorizontalAlignment="Right" Margin="0,44,54,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="285" />
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Web;component/FondoSAC.png" />
+                </Grid.Background>-->
+                <Label Content="Bienvenido" Margin="277.704,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1" d:LayoutOverrides="Width"/>
+                <Label x:Name="usuarioname" Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold" Grid.Column="1"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,57.966,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Column="1"/>
+                <Label Content="Clasificador Funcional  "  Margin="129,0,404,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" Width="177"/>
+                <Label Content="Nombre del Clasificador:" HorizontalAlignment="Left" Margin="34.5,63,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+                <DataGrid x:Name="TablaClasificador" Margin="34.5,202.948,48.96,214.25" Grid.ColumnSpan="2" Grid.Row="1" Width="1010" Height="234" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding ="{Binding Path=idClasifFuncional}" Header="Id" Width="100"/>
+                        <DataGridTextColumn Binding ="{Binding Path=Nombre}" Header="Nombre del clasificador" Width="250"/>
+                        <DataGridTextColumn Binding ="{Binding Path=Clave}" Header="Clave presupuestal" Width="120"/>
+                        <DataGridTextColumn Binding ="{Binding Path=Anio}" Header="Año Aplica" Width="80"/>
+                        <DataGridTextColumn Binding ="{Binding Path=Fecha}" Header="Fecha de registro" Width="150"/>
+                        <DataGridTextColumn Binding ="{Binding Path=PersonaRegistro}" Header="Persona Registró" Width="250"/>
+                        <DataGridTextColumn Binding ="{Binding Path=vigente}" Header="Vigente" Width="50"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Button x:Name="Blimpiar" Content="Limpiar"  Margin="361,0,471,150" Width="75" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="1"/>
+                <Button x:Name="Bgrabar" Content="Grabar"  Margin="173,0,660,150" Width="75" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="1" Click="Bgrabar_Click"/>
+                <Button x:Name="Bborrar" Content="Borrar"  Margin="457,0,375,150" Width="75" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Click="Bborrar_Click"/>
+                <TextBox x:Name="Tnombre" Height="auto" Margin="188.04,65,253.177,0" Grid.Row="1" TextWrapping="Wrap" Text="Nombre" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <Label Content="Clave presupuestal:" HorizontalAlignment="left" Margin="34.5,114.96,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+                <ComboBox x:Name="Canio" Margin="147,118.96,0,0" Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="120"/>
+                <Label Content="Año:" HorizontalAlignment="Left" Margin="98.756,114.96,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1" Grid.Column="1"/>
+                <TextBox x:Name="Tclave" Height="21.96" Margin="157.673,118.96,-51.178,0" Grid.Row="1" TextWrapping="Wrap" Text="Clave" VerticalAlignment="Top"/>
+                <Button x:Name="Bnuevo" Content="Nuevo" Margin="269,0,564,150" Width="75" Grid.Row="1" VerticalAlignment="Bottom" Grid.Column="1" Click="Bnuevo_Click"/>
+                <CheckBox x:Name="CHvigente" Content="Vigente" Grid.Column="1" HorizontalAlignment="Right" Margin="0,118.96,253.177,0" Grid.Row="1" VerticalAlignment="Top" Height="21.96" Width="77.126" FontWeight="Bold"/>
+            </Grid>
+
+            <Grid Margin="0,721,0,5" Width="Auto" Height="Auto" MinHeight="40.96">
+                <!--Background="#FF0800FF">-->
+                <!--PIE-->
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.345,1.357" StartPoint="0.345,0.048">
+                        <GradientStop Color="#FF0D006E" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+            <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="0,38,0,0">
+                
+            </Menu>
+
+        </Grid>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sac" Class="Conta" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=WASSAURUS-PC\MSSQLSERVERWAS;Initial Catalog=sac;Integrated Security=True" SettingsObjectName="SAC.Properties.Settings" SettingsPropertyName="sacConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Periodo" Member="TablaPeriodo">
+    <Type Name="TablaPeriodo">
+      <Column Name="idPeriodo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="mes" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="anio" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CuentaDet" Member="CuentaDet">
+    <Type Name="CuentaDet">
+      <Column Name="idDetalle" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCuenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idPeriodo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SaldoInicial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SaldoFinal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PresupuestoGastos" Member="PresupuestoGastos">
+    <Type Name="PresupuestoGastos">
+      <Column Name="idPresupuesto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idCuenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idPeriodo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="saldoInicialAprobado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalAprobado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicialXEjercer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalXEjercer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicialModificado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalModificado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicialComprometido" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalComprometido" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicalDevengado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalDevengado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicialEjercido" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalEjercido" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoInicialPagado" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="saldoFinalPagado" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CuentaEnc" Member="CuentaEnc">
+    <Type Name="CuentaEnc">
+      <Column Name="IdCuenta" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Cuenta" Type="System.String" DbType="Char(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Padre" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TipoCuenta" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="Hoja" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

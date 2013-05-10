@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sac" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GOYO-UTSJR;Initial Catalog=sac;Integrated Security=True" SettingsObjectName="SacIntegrado.Properties.Settings" SettingsPropertyName="sacConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Recurso" Member="Recurso">
+    <Type Name="Recurso">
+      <Column Name="idRecurso" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="ClavePresupuestal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FechaRegistro" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="AnioAplica" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Vigente" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="SaldoInicial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SaldoFin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleado" Member="Empleado">
+    <Type Name="Empleado">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorFuncional" Member="ClasificadorFuncional">
+    <Type Name="ClasificadorFuncional">
+      <Column Name="idClasifFuncional" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClasificadorProgramatico" Member="ClasificadorProgramatico">
+    <Type Name="ClasificadorProgramatico">
+      <Column Name="idClasifProgramatico" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ActividadPoa" Member="ActividadPoa">
+    <Type Name="ActividadPoa">
+      <Column Name="idActPoa" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Menu" Member="MenuBD">
+    <Type Name="MenuBD">
+      <Column Name="idMenu" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="Char(30)" CanBeNull="true" />
+      <Column Name="variable" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

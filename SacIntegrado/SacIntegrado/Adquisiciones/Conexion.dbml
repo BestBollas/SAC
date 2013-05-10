@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="sac" EntityNamespace="SacIntegrado.Adquisiciones" ContextNamespace="SacIntegrado.Adquisiciones" Class="ConexionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=GOYO-UTSJR;Initial Catalog=sac;Integrated Security=True" SettingsObjectName="SacIntegrado.Properties.Settings" SettingsPropertyName="sacConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Proyecto" Member="Proyecto">
+    <Type Name="Proyecto">
+      <Column Name="idProyecto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="idResponsable" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idRecurso" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idDepto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Proyecto_RequiEnc" Member="RequiEnc" ThisKey="idProyecto" OtherKey="idProyecto" Type="RequiEnc" />
+      <Association Name="Departamento_Proyecto" Member="Departamento" ThisKey="idDepto" OtherKey="idDepto" Type="Departamento" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Producto" Member="Producto">
+    <Type Name="Producto">
+      <Column Name="idProducto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="unidadMed" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Costo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="idCuenta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idClasificador" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idProveedor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idCategoria" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Producto_RequiDet" Member="RequiDet" ThisKey="idProducto" OtherKey="idProducto" Type="RequiDet" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RequiEnc" Member="RequiEnc">
+    <Type Name="RequiEnc">
+      <Column Name="idRequisicion" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Folio" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="idProyecto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="fechaElaboracion" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="importe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Motivo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Observaciones" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="FechaRequerida" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ArchivoSoporte" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="statusRP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusJA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusJAC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusCO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="statusPresup" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idComprador" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="RequiEnc_RequiDet" Member="RequiDet" ThisKey="idRequisicion" OtherKey="idRequiEnc" Type="RequiDet" />
+      <Association Name="Proyecto_RequiEnc" Member="Proyecto" ThisKey="idProyecto" OtherKey="idProyecto" Type="Proyecto" IsForeignKey="true" />
+      <Association Name="Empleado_RequiEnc" Member="Empleado" ThisKey="idEmpleado" OtherKey="idEmpleado" Type="Empleado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RequiDet" Member="RequiDet">
+    <Type Name="RequiDet">
+      <Column Name="idRequiDet" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idRequiEnc" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="idProducto" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="cantidad" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="precio" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="motivo" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Producto_RequiDet" Member="Producto" ThisKey="idProducto" OtherKey="idProducto" Type="Producto" IsForeignKey="true" />
+      <Association Name="RequiEnc_RequiDet" Member="RequiEnc" ThisKey="idRequiEnc" OtherKey="idRequisicion" Type="RequiEnc" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Comprador" Member="Comprador">
+    <Type Name="Comprador">
+      <Column Name="idComprador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Empleado_Comprador" Member="Empleado" ThisKey="idEmpleado" OtherKey="idEmpleado" Type="Empleado" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleado" Member="Empleado">
+    <Type Name="Empleado">
+      <Column Name="idEmpleado" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="numEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="nombre" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="apPater" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="apMater" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="idGpo" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="usuario" Type="System.String" DbType="Char(10)" CanBeNull="true" />
+      <Association Name="Empleado_RequiEnc" Member="RequiEnc" ThisKey="idEmpleado" OtherKey="idEmpleado" Type="RequiEnc" />
+      <Association Name="Empleado_Comprador" Member="Comprador" ThisKey="idEmpleado" OtherKey="idEmpleado" Type="Comprador" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Departamento" Member="Departamento">
+    <Type Name="Departamento">
+      <Column Name="idDepto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NombreDepto" Member="nombreDepto" Type="System.String" DbType="VarChar(90)" CanBeNull="true" />
+      <Column Name="idJefe" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Departamento_Proyecto" Member="Proyecto" ThisKey="idDepto" OtherKey="idDepto" Type="Proyecto" />
+    </Type>
+  </Table>
+</Database>

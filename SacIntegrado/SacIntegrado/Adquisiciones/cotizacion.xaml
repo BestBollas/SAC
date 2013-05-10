@@ -1,0 +1,177 @@
+﻿<Page x:Class="SacIntegrado.Adquisiciones.cotizacion"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	Title="cotizacion">
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid x:Name="contenedor" Width="Auto" Height="758.96" >
+
+            <Grid  Margin="0,0,0,40.96" Width="Auto" MinWidth="1117.96" MinHeight="554.96" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="-2,38,2,0">
+
+                </Menu>
+                <Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="usuario" Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold"/>
+                <Label x:Name="lblLogout" Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,59.966,0" VerticalAlignment="Top" FontWeight="Bold" MouseDown="cerrarSesion" />
+                <StackPanel Height="Auto" VerticalAlignment="Bottom" Width="Auto" Margin="0,0,2,0">
+                    <Grid Background="Transparent" Height="Auto" Width="Auto">
+                        <Grid x:Name="gNueva" Height="655.46" VerticalAlignment="Bottom" >
+                            <!--ESTE ES EL GRIDSTACKPANEL [CONTENIDO]-->
+                            <Label VerticalAlignment="Top" Content="Cotización" HorizontalAlignment="Center" Margin="486,10.5,446.273,0" FontWeight="Bold" FontSize="18.667"/>
+                            <!--<Label Content="Folio Requisición" Margin="34.499,67.5,977.539,0" VerticalAlignment="Top" FontWeight="Bold" d:LayoutOverrides="Width"/>-->
+                            <Label x:Name="fechaElab" Content="00/00/0000" Margin="425,52,622,0" VerticalAlignment="Top"/>
+                            <Label x:Name="fechaReq" Content="00/00/0000" Margin="776,53,271,0" VerticalAlignment="Top"/>
+
+                            
+                            <Label Content="Folio Requisición" Margin="44,53,1204,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Fecha de Elaboración" Margin="263,51,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="Requerido (Fecha)" Margin="0,51,607,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right"/>
+                            <Label Content="P. Solicitante" Margin="44,126,968,0" VerticalAlignment="Top" FontWeight="Bold" d:LayoutOverrides="Width"/>
+                            <Label Content="Proyecto Presupuestal" Margin="44,92,0,0" VerticalAlignment="Top" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment, Width" HorizontalAlignment="Left" Width="384" />
+                            <Label Content="Depto. Beneficiado" Margin="44,160,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="Razón o Motivo&#xd;&#xa;(Requisición)" Margin="44,200,0,0" FontWeight="Bold" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" HorizontalAlignment="Left"/>
+                            <Label Content="Observaciones&#xd;&#xa;(Requisición)" Margin="0,200,518,0" FontWeight="Bold" VerticalAlignment="Top" d:LayoutOverrides="VerticalAlignment" RenderTransformOrigin="0.458,-0.692" HorizontalAlignment="Right"/>
+                            <TextBox Margin="148,202,614,413" TextWrapping="Wrap" Text="¿Por qué?" Name="txtMotiv" IsEnabled="False" />
+                            <TextBox Margin="0,202,166,413" TextWrapping="Wrap" Text="¿Algo qué comentar?" HorizontalAlignment="Right" Width="330.296" Name="txtObserv" IsEnabled="False" />
+                            <TextBox Margin="214,130,0,0" TextWrapping="Wrap" Text="Solicitante" VerticalAlignment="Top" HorizontalAlignment="Left" Width="638" Height="22.42" Name="solicitante" IsEnabled="False" />
+                            <Label Content="0000" Margin="184,53,1113,0" VerticalAlignment="Top" Name="folio" />
+                            <!--<Label Content="00/00/0000" Margin="426,53,621,0" VerticalAlignment="Top" d:LayoutOverrides="Width" Name="fechaElab" />-->
+
+                            <CheckBox x:Name="chckCotizacion" Content="Habilitar" Margin="0,214,74,0" VerticalAlignment="Top" HorizontalAlignment="Right" Checked="habilitarObserv" Click="habObservac"/>
+                            <DataGrid Margin="44,260,44,293" AutoGenerateColumns="False" d:LayoutOverrides="VerticalAlignment" Name="dGproductRequi" CanUserAddRows="False" Background="#FFE0EAF6" SelectionChanged="cotizarProdDg" MouseDoubleClick="dobleCoti">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="ID" Width="50"  Binding="{Binding idPro}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Producto Requerido" Width="400"  Binding="{Binding nombreProdu}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Cantidad" Width="100" Binding="{Binding cantidad}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Precio" Width="100" Binding="{Binding precio}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Total" Width="100" Binding="{Binding total}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Status" Width="100" Binding="{Binding stat}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="" Binding="{Binding stat}" IsReadOnly="True" Visibility="Collapsed"/>
+                                    <!--<DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Label Foreground="#FFF1AA10" FontWeight="ExtraBold" FontSize="9" MouseDown="cotizMouseD">Cotizar</Label>
+                                                <Button Click="cotiz" >Cotizar</Button>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>-->
+                                    <DataGridTextColumn Header="OC/GM" Width="100" Binding="{Binding oCgM}" IsReadOnly="False"/>
+                                    <DataGridTextColumn Header="ID Prov" IsReadOnly="False" Binding="{Binding idProvAsigCot}"/>
+                                    <DataGridTextColumn Header="ID Cotiz Det" IsReadOnly="True" Binding="{Binding idCotSelecToCuad}"/>
+                                    <DataGridTextColumn Header="Tipo" IsReadOnly="True" Binding="{Binding tipoCotToCuad}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Background="Transparent" Width="1366" Margin="0,408,0,57">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="234*"/>
+                                    <ColumnDefinition Width="22*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="401*"/>
+                                    <ColumnDefinition Width="25*"/>
+                                    <ColumnDefinition Width="27*"/>
+                                    <ColumnDefinition Width="647*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid Margin="44,45,0,0" HorizontalAlignment="Left" Width="607" AutoGenerateColumns="False" Name="reqXrevisar" CanUserAddRows="False" SelectionChanged="reqPendiete_SelectionChanged" Grid.ColumnSpan="4">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Folio"  Binding="{Binding folio}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Elaboracion"  Binding="{Binding fechaElab}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Requerida" Binding="{Binding fechaReq}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Dpto. Beneficiado" Binding="{Binding nombreDepto}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Solicitante" Binding="{Binding nombreEmpleado}" IsReadOnly="True"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <DataGrid Margin="0,45,44,0" HorizontalAlignment="Right" Width="618" AutoGenerateColumns="False" CanUserAddRows="False" Name="reqRevis" Grid.Column="5" Grid.ColumnSpan="2" SelectionChanged="comeBackCotiz_SelCh" >
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Folio"  Binding="{Binding folio}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Elaboracion"  Binding="{Binding fechaElab}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Requerida" Binding="{Binding fechaReq}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Dpto. Beneficiado" Binding="{Binding nombreDepto}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Solicitante" Binding="{Binding nombreEmpleado}" IsReadOnly="True"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                            <Button x:Name="btnAcepCoti" Content="Aceptar" HorizontalAlignment="Right" Margin="0,0,1077,245.46" Width="75" VerticalAlignment="Bottom" Click="saveProdsCotizados" IsEnabled="False" />
+                            <Button x:Name="btnRecObserv" Content="Grabar Observaciones" Margin="600,380,622,0" VerticalAlignment="Top" IsEnabled="False" Click="recObservCot" />
+                            <Label Content="Requisiciones Cotizadas" Margin="792,0,220,212" HorizontalAlignment="Center" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment, Width" VerticalAlignment="Bottom"/>
+                            <Label Content="Requisiciones a Cotizar" Margin="217,0,795,213" HorizontalAlignment="Center" FontWeight="Bold" d:LayoutOverrides="HorizontalAlignment, Width" VerticalAlignment="Bottom"/>
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="214,92,0,0" Name="proyectPresup" VerticalAlignment="Top" Width="638" IsEnabled="False" />
+                            <TextBox Height="23" Margin="0,163,514,0" Name="dptoBenef" VerticalAlignment="Top" HorizontalAlignment="Right" Width="638" IsEnabled="False" />
+                            <Label Content="Total:" Height="28" HorizontalAlignment="Left" Margin="1144,374,0,0" Name="label1" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" />
+                            <Label Content="000.00" Height="28" HorizontalAlignment="Left" Margin="1230,374,0,0" Name="lblTot" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" />
+                            <Popup Name="cotizac" StaysOpen="True" Placement="Center" MaxWidth="900"><!--Margin="350,130,350,130">-->
+                                <!--<Grid Width="200" Height="200"></Grid>-->
+                                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Width="894">
+                                    <Grid Background="#6CA6CD" Height="443">
+                                        <Label Content="Cotizar Producto" FontWeight="Bold" HorizontalAlignment="Center" Height="30" Margin="283,9,277,0" VerticalAlignment="Top" Width="105"/>
+                                        <Label Content="Producto" HorizontalAlignment="Center" Height="30" Margin="16,84,810,0" VerticalAlignment="Top" Width="68"/>
+                                        <Label Content="Cantidad" HorizontalAlignment="Center" Height="30" Margin="16,117,818,0" VerticalAlignment="Top" Width="60"/>
+                                        <Label Content="Clasificador" HorizontalAlignment="Center" Height="30" Margin="158,117,664,0" VerticalAlignment="Top" Width="72"/>
+                                        <Label Content="Unidad de Medida" HorizontalAlignment="Center" Height="30" Margin="16,143,758,0" VerticalAlignment="Top" Width="120"/>
+                                        <Label x:Name="lblUnidMed" Content="Unidad" HorizontalAlignment="Center" Height="30" Margin="162,143,678,0" VerticalAlignment="Top" Width="54"/>
+                                        <Label Content="Precio" HorizontalAlignment="Center" Height="30" Margin="246,143,594,0" VerticalAlignment="Top" Width="54"/>
+                                        <Label x:Name="lblCant" Content="0" HorizontalAlignment="Center" Height="30" Margin="112,117,752,0" VerticalAlignment="Top" Width="30"/>
+                                        <Label Content="Fecha Cotización" HorizontalAlignment="Center" Height="30" Margin="632,44,163,0" VerticalAlignment="Top" Width="99"/>
+                                        <Label Content="Observaciones" HorizontalAlignment="Center" Height="30" Margin="16,177,792,0" VerticalAlignment="Top" Width="86"/>
+                                        <Label Content="Proveedor" HorizontalAlignment="Center" Height="30" Margin="16,218,792,0" VerticalAlignment="Top" Width="86"/>
+                                        <Label x:Name="lblClosePop" Content="X Cancelar" FontWeight="ExtraBold" HorizontalAlignment="Center" Height="30" Margin="16,10,806,0" VerticalAlignment="Top" Width="72" MouseDown="cerrarPop"/>
+                                        <DatePicker x:Name="dpFechaCotizPop" Margin="749,44,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="131" ></DatePicker>
+                                        <DataGrid x:Name="dgPopCotiz" Margin="16,253,18,10" AutoGenerateColumns="False" CanUserAddRows="False" >
+                                            <DataGrid.Columns>
+                                                <DataGridTextColumn Header="Proveedor" Binding="{Binding dgproveed}"/>
+                                                <DataGridTextColumn Header="Producto" Binding="{Binding dgproduc}" Visibility="Collapsed"/>
+                                                <DataGridTextColumn Header="Precio" Binding="{Binding dgprecio}"/>
+                                                <DataGridTextColumn Header="F.Registro" Binding="{Binding dgfechReg}"/>
+                                                <DataGridTextColumn Header="F.Cotización" Binding="{Binding dgfechCoti}"/>
+                                                <DataGridTextColumn Header="Persona Reg." Binding="{Binding dgPersonaReg}"/>
+                                                <DataGridTextColumn Header="Observaciones" Binding="{Binding dgObservCot}"/>
+                                                <DataGridTemplateColumn Header="Asignar">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <RadioButton GroupName="popupCotiza" HorizontalAlignment="Center" Checked="RadioButton_Checked_1"/>
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTemplateColumn Header="Cuadro Comp.">
+                                                    <DataGridTemplateColumn.CellTemplate>
+                                                        <DataTemplate>
+                                                            <CheckBox HorizontalAlignment="Center" IsChecked="{Binding Path=isch, UpdateSourceTrigger=PropertyChanged}" Click="checar" />
+                                                        </DataTemplate>
+                                                    </DataGridTemplateColumn.CellTemplate>
+                                                </DataGridTemplateColumn>
+                                                <DataGridTextColumn Header="ID Cotización" Binding="{Binding idCotiDet}"/>
+                                                <DataGridTextColumn Header="Tipo" Binding="{Binding tipoCot}"/>
+                                            </DataGrid.Columns>
+                                        </DataGrid>
+                                        <Button Content="Probar" Margin="805,131,25,0" FontSize="10" Height="28" VerticalAlignment="Top" Click="contarFilas" />
+                                        <Button Content="Guardar" Margin="805,177,25,0" FontSize="10" Height="28" VerticalAlignment="Top" />
+                                        <Button x:Name="btnAsigProvProd" Content="Asignar" Margin="805,216,25,0" FontSize="10" Height="28" VerticalAlignment="Top" Click="btnAsignarProvCotiz" IsEnabled="False"/>
+                                        <Button Content="Agregar" Margin="721,216,102,0" FontSize="10" Height="28" VerticalAlignment="Top" Click="btnAddToCotizar" />
+                                        <TextBox x:Name="txtProdCotiz" Height="23" Margin="132,84,106,336" IsEnabled="False"/>
+                                        <TextBox x:Name="txtPrec" Height="23" Margin="298,145,551,275" IsEnabled="True" PreviewTextInput="precioJustNum"/>
+                                        <TextBox x:Name="txtClasif" Height="23" Margin="235,117,106,303" IsEnabled="False"/>
+                                        <TextBox x:Name="ObservCotizPop" Margin="132,173,106,232" AcceptsReturn="True" TextWrapping="Wrap"/>
+                                        <ComboBox x:Name="cmbbProvPop" Margin="132,219,178,201" SelectionChanged="changeCmbProvPop"/>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+                        </Grid>
+                        <!--POPUP FUERA DEL GRID QUE CONTIENE LAS TABLAS Y TEXTBOX DE LA VENTANA-->
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="0,717,0,0" Width="Auto" MinWidth="1117.96" Height="Auto" MinHeight="40.96" Background="#FF0B004D">
+                <!--PIE-->
+                <!--<Grid.Background>
+        		<LinearGradientBrush EndPoint="0.345,1.357" StartPoint="0.345,0.048">
+        			<GradientStop Color="#FF0D006E" Offset="0"/>
+        			<GradientStop Color="White" Offset="0.823"/>
+        		</LinearGradientBrush>
+        	</Grid.Background>-->
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

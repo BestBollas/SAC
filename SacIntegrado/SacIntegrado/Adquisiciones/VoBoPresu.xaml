@@ -1,0 +1,102 @@
+﻿<Page x:Class="SacIntegrado.Adquisiciones.VoBoPresu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      
+	Title="VoBoPresu">
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid x:Name="contenedor" Width="Auto" Height="758.96" >
+
+            <Grid  Margin="0,0,0,40.96" Width="Auto" MinWidth="1117.96" MinHeight="554.96" >
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="-2,38,2,0">
+                </Menu>
+                <Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="usuario" Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,59.966,0" VerticalAlignment="Top" FontWeight="Bold" MouseDown="cerrarSesion" />
+                <StackPanel Height="Auto" VerticalAlignment="Bottom" Width="Auto" Margin="0,0,2,0">
+                    <Grid Background="Transparent" Height="Auto" Width="Auto">
+                        <!--AUTORIZACION JEFE DE COMPRAS Y ASIGNA COMPRADOR EDER MENSO-->
+                        <Grid x:Name="gAutorizacion" Height="655.46" VerticalAlignment="Bottom" Visibility="Visible">
+                            <Label VerticalAlignment="Top" Content="Visto Bueno Presupuesto" HorizontalAlignment="Center" Margin="506.384,12.5,380.96,0" FontWeight="Bold" FontSize="18.667"/>
+                            <Label Content="Folio GM/OC" Margin="32,20,1236,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Folio Requisición" Margin="32,53,980,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Fecha de Elaboración" Margin="263,51,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="Requerido (Fecha)" Margin="0,51,206,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right"/>
+                            <Label Content="P. Solicitante" Margin="32,148,980,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <Label Content="Proyecto Presupuestal" Margin="32,187,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left" Width="384" />
+                            <Label Content="Depto. Beneficiado" Margin="32,114,0,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Left"/>
+                            <Label Content="Razón o Motivo&#xA;(Requisición)" Margin="32,222,0,0" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Label Content="Observaciones&#xA;(Requisición)" Margin="0,222,518,0" FontWeight="Bold" VerticalAlignment="Top" RenderTransformOrigin="0.458,-0.692" HorizontalAlignment="Right"/>
+                            <TextBox Margin="148,224,614,391.46" TextWrapping="Wrap" Text="¿Por qué?" x:Name="txtMotiv"  IsEnabled="False"/>
+                            <TextBox Margin="0,224,166,391.46" TextWrapping="Wrap" Text="¿Algo qué comentar?" HorizontalAlignment="Right" Width="330" x:Name="txtObserv" IsEnabled="False"/>
+                            <TextBox Margin="184,152,0,0" TextWrapping="Wrap" Text="Solicitante" VerticalAlignment="Top" HorizontalAlignment="Left" Width="553" Height="22" x:Name="solicitante"  IsEnabled="False"/>
+                            <TextBox Margin="0,152,44,0" TextWrapping="Wrap" Text="Comprador" VerticalAlignment="Top" HorizontalAlignment="Right" Width="469" Height="22" x:Name="txtcmprad"  IsEnabled="False"/>
+                            <TextBox Margin="0,187,44,0" TextWrapping="Wrap" Text="Área del Proyecto" VerticalAlignment="Top" HorizontalAlignment="Right" Width="373" Height="22" x:Name="txtAreaProy"  IsEnabled="False"/>
+                            <Label Content="0000" Margin="184,53,1138,0" VerticalAlignment="Top" x:Name="folio" />
+                            <Label Content="0000" Margin="0,20,1138,0" VerticalAlignment="Top" x:Name="folioGmOc" HorizontalAlignment="Right" Width="45" />
+                            <Label Content="Comprador" Margin="0,148,537,0" VerticalAlignment="Top" x:Name="comprad" HorizontalAlignment="Right" Width="73" />
+                            <Label Content="Saldo" Margin="0,187,537,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="73" />
+                            <Label Content="Área" Margin="0,187,422,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="41" />
+                            <Label Content="000.000" Margin="0,187,473,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="73" FontWeight="Bold" Foreground="#FFE45119" />
+                            <Label Content="00/0000" Margin="426,53,860,0" VerticalAlignment="Top" x:Name="fechaElab" />
+                            <Label Content="00/00/0000" VerticalAlignment="Top" x:Name="fechRqda" Margin="0,53,74,0" HorizontalAlignment="Right" Width="82"/>
+                            <CheckBox Content="Habilitar" Margin="0,236,74,0" VerticalAlignment="Top" HorizontalAlignment="Right" Checked="habilitarObserv" x:Name="chbHabObsNew"/>
+                            <DataGrid Margin="32,299,44,254.46" AutoGenerateColumns="False" x:Name="dGproductRequi" CanUserAddRows="False" >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Producto Requerido" Width="400"  Binding="{Binding nombreProd}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Cantidad" Width="100" Binding="{Binding cantidad}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Precio" Width="100" Binding="{Binding precio}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Total" Width="100" Binding="{Binding total}" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Clasificador" Width="300" Binding="{Binding }" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="U. De Medida" Width="150" Binding="{Binding }" IsReadOnly="True"/>
+                                    <DataGridTextColumn Header="Partida" Width="100" Binding="{Binding }" IsReadOnly="True"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Grid Background="Transparent" Width="1366" Margin="0,408,0,57">
+                                <DataGrid Margin="35,61,0,-16" HorizontalAlignment="Left" Width="616" AutoGenerateColumns="False" x:Name="ocRevisar" SelectionChanged="oc_SelectionChanged" CanUserAddRows="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ID Orden" Binding="{Binding idOrdE}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Folio Requisición"  Binding="{Binding folioRq}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Fecha de Registro"  Binding="{Binding fechaRegOrd}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Persona que Registró"  Binding="{Binding persRegis}" IsReadOnly="True"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                                <DataGrid Margin="0,61,44,-16" HorizontalAlignment="Right" Width="618" AutoGenerateColumns="False" x:Name="gmRevisar" CanUserAddRows="False" SelectionChanged="dgGmSelecChang">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="ID Orden"  Binding="{Binding idOrdE}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Folio Requisición"  Binding="{Binding folioRq}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Fecha de Registro"  Binding="{Binding fechaRegOrd}" IsReadOnly="True"/>
+                                        <DataGridTextColumn Header="Persona que Registró" Binding="{Binding persRegis}" IsReadOnly="True"/>
+                                        </DataGrid.Columns>
+                                </DataGrid>
+
+                            </Grid>
+                            <Button Content="Autorizar" Margin="594,408,698,0" VerticalAlignment="Top" Width="75" Click="btnAutorizar" />
+                            <Button Content="Guardar Observaciones" Margin="711,408,499,0" VerticalAlignment="Top" />
+                            <Label Content="Gasto Menor" Margin="1015,0,269,196.46" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                            <Label Content="Orden de Compra" Margin="282,0,975,196.46" HorizontalAlignment="Center" FontWeight="Bold" VerticalAlignment="Bottom"/>
+                            <TextBox Height="23" HorizontalAlignment="Left" Margin="184,187,0,0" x:Name="proyectPresup" VerticalAlignment="Top" Width="553" IsEnabled="False" />
+                            <TextBox Height="23" Margin="0,117,515,0" x:Name="dptoBenef" VerticalAlignment="Top" HorizontalAlignment="Right" Width="668"  IsEnabled="False"/>
+                            <Label Content="Total:" Height="28" HorizontalAlignment="Left" Margin="1178,406,0,0" x:Name="label1" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" />
+                            <Label Content="000.00" Height="28" HorizontalAlignment="Left" Margin="1256,406,0,0" x:Name="lblTot" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="Red" />
+                            <Label Content="Proveedor:"  FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="32,268,0,0"/>
+                            <Label Content="--"  FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="148,268,0,0"/>
+                        </Grid>
+                    </Grid>
+                </StackPanel>
+                <!--CONTENIDO-->
+
+
+            </Grid>
+
+            <Grid Margin="0,717,0,0" Width="Auto" MinWidth="1117.96" Height="Auto" MinHeight="40.96" Background="#FF0B004D">
+
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

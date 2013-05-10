@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Conta">
+  <DataContextMoniker Name="/Conta" />
+  <nestedChildShapes>
+    <classShape Id="7208a1d5-3edf-49e6-bb5f-f1817d013a82" absoluteBounds="5.5, 3.75, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/Conta/TablaPeriodo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5bfaf070-9427-46cb-84ad-99dfd18fcc03" absoluteBounds="5.515, 4.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8246ffa3-36b9-40aa-8837-7e65dc4f6de7" absoluteBounds="3.25, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/Conta/CuentaDet" />
+      <nestedChildShapes>
+        <elementListCompartment Id="002b5509-e7ce-4dd3-ad45-1221728f1988" absoluteBounds="3.2649999999999997, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4eb02981-b969-4904-b5a3-1f1c3dfcb209" absoluteBounds="1.25, 3.5, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/Conta/PresupuestoGastos" />
+      <nestedChildShapes>
+        <elementListCompartment Id="653a6983-4491-4e52-b78b-a4bc50a62a34" absoluteBounds="1.2650000000000001, 3.96, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c3949fba-1440-4341-a5b4-e83c31d359f5" absoluteBounds="0.5, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/Conta/CuentaEnc" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bf6733f8-ee92-4449-accf-9d952c5ba9b2" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

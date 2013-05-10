@@ -1,0 +1,109 @@
+﻿<Page x:Class="SacIntegrado.Tesoreria.Ventanilla"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:re="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+      mc:Ignorable="d" 
+      WindowTitle="Nuevo Recibo">
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid Width="Auto" Height="Auto">
+            <Grid Margin="0,0,0,40.96" Width="Auto" MinWidth="1007.96" Height="Auto" MinHeight="554.96">
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="-2,38,2,0"/>
+                <Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,270.966,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="usuario" Content="Unknown" HorizontalAlignment="Right" Margin="0,8.04,184.966,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,59.966,0" VerticalAlignment="Top" FontWeight="Bold" MouseDown="cerrarSesion" />
+                <Label VerticalAlignment="Top" Content="Nuevo Recibo" HorizontalAlignment="Center" Margin="535,91,545,0" FontWeight="Bold" FontSize="18.667"/>
+                <Label Content="Clave / Nombre:" HorizontalAlignment="Left" Margin="91,200,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="102"/>
+                <Label Content="Dirección:" HorizontalAlignment="Left" Margin="91,250,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="clave" HorizontalAlignment="Left" Height="22" Margin="221,204,0,0" VerticalAlignment="Top" Width="432" TextChanged="clave_TextChanged" ToolTip="Buscar por Nombre, Matricula, No. de Empleado, Curp, RFC, segun sea el caso"/>
+                <Label x:Name="direccion" HorizontalAlignment="Left" Margin="178,244,0,0" VerticalAlignment="Top" Width="566" Height="26"/>
+                <Label Content="Folio:" HorizontalAlignment="Left" Margin="1035,136,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="folio" Content="0000" HorizontalAlignment="Left" Margin="1075,136,0,0" VerticalAlignment="Top"/>
+                <Label Content="Servicio:" HorizontalAlignment="Left" Margin="91,294,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="servicio" HorizontalAlignment="Left" Height="24" Margin="179,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="474" TextChanged="servicio_TextChanged" IsEnabled="False"/>
+                <Label Content="Cantidad:" HorizontalAlignment="Left" Margin="680,294,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="cantidad" HorizontalAlignment="Left" Height="24" Margin="770,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
+                <Label Content="Descuento:" HorizontalAlignment="Left" Margin="868,294,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBox x:Name="descNeto" HorizontalAlignment="Left" Height="22" Margin="980,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False"/>
+                <TextBox x:Name="descPorcentual" HorizontalAlignment="Left" Height="24" Margin="1052,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" IsEnabled="False"/>
+                <Button x:Name="añadir" Content="Agregar" HorizontalAlignment="Left" Margin="365,337,0,0" VerticalAlignment="Top" Width="76" Click="añadir_Click"/>
+                <Label Content="Fecha:" HorizontalAlignment="Left" Margin="865,136,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                <Label x:Name="fecha" Content="00/00/0000" HorizontalAlignment="Left" Margin="907,136,0,0" VerticalAlignment="Top"/>
+                <DataGrid x:Name="servDg" Margin="91,372,0,158.04" AutoGenerateColumns="False" HorizontalAlignment="Left" Width="1034">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="cod" Header="Codigo" Width="90" Binding="{Binding claveServ}"/>
+                        <DataGridTextColumn x:Name="nomSv" Header="Nombre" Width="300" Binding="{Binding nombreServ}"/>
+                        <DataGridTextColumn x:Name="prec" Header="Precio" Width="100" Binding="{Binding precio}"/>
+                        <DataGridTextColumn x:Name="cant" Header="Cantidad" Width="100" Binding="{Binding cantidad}"/>
+                        <DataGridTextColumn x:Name="totl" Header="Total" Width="100" Binding="{Binding total}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Importe a Pagar:" HorizontalAlignment="Left" Margin="770,579,0,0" VerticalAlignment="Top" Foreground="Black" FontWeight="Bold" FontSize="14"/>
+                <Label x:Name="impTotal" Content="000.00" HorizontalAlignment="Left" Margin="941,579,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="14" FontWeight="Bold"/>
+                <Button x:Name="impRecibo" Content="Terminar" HorizontalAlignment="Left" Margin="469,587,0,0" VerticalAlignment="Top" Width="94" Click="impRecibo_Click"/>
+                <Button x:Name="quitar" Content="Quitar" HorizontalAlignment="Left" Margin="308,587,0,0" VerticalAlignment="Top" Width="76" Click="quitar_Click"/>
+                <Label Content="$" HorizontalAlignment="Left" Margin="962,294,0,0" VerticalAlignment="Top"/>
+                <Label Content="%" HorizontalAlignment="Left" Margin="1104,292,0,0" VerticalAlignment="Top"/>
+                <ListBox x:Name="listaCl" HorizontalAlignment="Left" Height="109" Margin="179,176,0,0" VerticalAlignment="Top" Width="418" SelectionChanged="listaCl_SelectionChanged" Visibility="Hidden" />
+                <ListBox x:Name="listaServ" HorizontalAlignment="Left" Height="109" Margin="178,302,0,0" VerticalAlignment="Top" Width="418" SelectionChanged="listaServ_SelectionChanged" Visibility="Hidden"/>
+                <CheckBox x:Name="cbNeto" Content="Neto" HorizontalAlignment="Left" Margin="980,258,0,0" VerticalAlignment="Top" Click="cbNeto_Click"/>
+                <CheckBox x:Name="cbPorcentual" Content="Porcentual" HorizontalAlignment="Left" Margin="1052,258,0,0" VerticalAlignment="Top" Click="cbPorcentual_Click"/>
+                <Label x:Name="ic" Content="" HorizontalAlignment="Left" Margin="542,152,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                <Button x:Name="agregaMod" Content="Nuevo" HorizontalAlignment="Left" Margin="708,196,0,0" VerticalAlignment="Top" Click="agregaMod_Click" Width="70"/>
+                <!--Ventana Emergente para dar de alta o modificar clientes (INICIO)-->
+                <Border x:Name="agregaNvo" RenderTransformOrigin="0.51,0.51" Margin="392,75,0,197.46" Visibility="Collapsed" HorizontalAlignment="Left" Width="684">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="LightBlue" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid Background="White" RenderTransformOrigin="0.726,0.491" Margin="10">
+                        <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Height="99" Width="664" >
+                            <Label Content="Agregar Nuevo Cliente" Margin="240,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+                            <Label Content="Tipo:" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <ComboBox x:Name="tipoCl" HorizontalAlignment="Left" Margin="47,56,0,0" VerticalAlignment="Top" Width="168" SelectionChanged="tipoCl_SelectionChanged"/>
+                            <Button x:Name="salirAc" Content="Salir" HorizontalAlignment="Left" Margin="579,10,0,0" VerticalAlignment="Top" Width="75" Click="salirAc_Click"/>
+                        </Grid>
+                        <Grid x:Name="contDatos" HorizontalAlignment="Left" Height="259" Margin="0,104,0,0" VerticalAlignment="Top" Width="664" Visibility="Visible">
+                            <Label Content="No. Empleado" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="11,14,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="92"/>
+                            <TextBox x:Name="clIdent" HorizontalAlignment="Left" Height="23" Margin="103,17,0,0" VerticalAlignment="Top" Width="225"/>
+                            <Label Content="Nombre" HorizontalAlignment="Left" Margin="11,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="nomAc" HorizontalAlignment="Left" Height="23" Margin="11,89,0,0" VerticalAlignment="Top" Width="179"/>
+                            <Label Content="Apellido Paterno" HorizontalAlignment="Left" Margin="211,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="apPater" HorizontalAlignment="Left" Height="23" Margin="211,89,0,0" VerticalAlignment="Top" Width="153"/>
+                            <Label Content="Apellido Materno" HorizontalAlignment="Left" Margin="383,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="apMater" HorizontalAlignment="Left" Height="23" Margin="383,89,0,0" VerticalAlignment="Top" Width="154"/>
+                            <Label Content="Calle" HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="calle" HorizontalAlignment="Left" Height="22" Margin="10,149,0,0" VerticalAlignment="Top" Width="189"/>
+                            <Label Content="No." HorizontalAlignment="Left" Margin="219,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="num" HorizontalAlignment="Left" Height="23" Margin="219,148,0,0" VerticalAlignment="Top" Width="40"/>
+                            <Label Content="Colonia" HorizontalAlignment="Left" Margin="282,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="colonia" HorizontalAlignment="Left" Height="23" Margin="282,148,0,0" VerticalAlignment="Top" Width="181" FontWeight="Bold"/>
+                            <Label Content="Municipio" HorizontalAlignment="Left" Margin="482,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                            <TextBox x:Name="municipio" HorizontalAlignment="Left" Height="23" Margin="482,148,0,0" VerticalAlignment="Top" Width="173"/>
+                            <Label Content="Estado" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="10,176,0,0"/>
+                            <TextBox x:Name="estado" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="188" Margin="11,207,0,0"/>
+                            <Button x:Name="guardar" Content="Guardar Cambios" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="127" Margin="527,219,0,0" Click="guardar_Click"/>
+                            <Label Content="Telefono" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="219,176,0,0"/>
+                            <TextBox x:Name="telefono" HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="188" Margin="219,207,0,0"/>
+                        </Grid>
+
+                    </Grid>
+                </Border>
+                <Grid x:Name="conRep" HorizontalAlignment="Left" Height="529" Margin="33,136,0,0" VerticalAlignment="Top" Width="1141" Background="White" Visibility="Hidden">
+                    <WindowsFormsHost Margin="0,4,0,41">
+                        <re:ReportViewer x:Name="vistaRep"/>
+                    </WindowsFormsHost>
+                    <Button x:Name="cerrarRep" Content="Cerrar" HorizontalAlignment="Left" Margin="1056,493,0,0" VerticalAlignment="Top" Width="75" Click="cerrarRep_Click"/>
+
+                </Grid>
+            </Grid>
+            <Grid Margin="0,726,0,0" Width="Auto" Height="Auto" MinHeight="40.96" Background="#FF0B004D"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
+ 

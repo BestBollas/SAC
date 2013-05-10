@@ -1,0 +1,76 @@
+﻿<Page x:Class="SacIntegrado.Conta_Presu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      
+	Title="Conta_Presu">
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid x:Name="contenedor" Width="Auto" Height="Auto">
+            <Grid Margin="0,0,0,40.96" Width="Auto" MinWidth="1007.96" Height="Auto" MinHeight="554.96">
+                <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Foreground="Snow" Height="Auto" Margin="0,38,0,0">
+                </Menu>
+                <Label Content="Bienvenido" HorizontalAlignment="Right" Margin="0,8,278,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                <Label x:Name="usuario" Content="Unknown" HorizontalAlignment="Right" Margin="0,8,167,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold" Width="100"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,8.04,59.966,0" VerticalAlignment="Top" MouseDown="menuCerrarSesion_Click" FontWeight="Bold"/>
+                <Grid x:Name="Cuentas" Margin="0,67,0,100.04" >
+                    <!--aqui el colapset "Visibility="Collapsed"" -->
+                    <Label Content="CUENTAS" VerticalAlignment="Top" FontWeight="Bold" Margin="610,10,607,0" FontSize="16"/>
+                    <Label Content="Nombre" HorizontalAlignment="Left" Margin="81,277,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="nombre" HorizontalAlignment="Left" Height="23" Margin="157,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="424"/>
+                    <Label Content="Cuenta Mayor" HorizontalAlignment="Left" Margin="81,313,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="ctaGenerada" HorizontalAlignment="Left" Height="23" Margin="996,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TextChanged="ctaGenerada_TextChanged" GotFocus="ctaGenerada_GotFocus" Visibility="Hidden"/>
+                    <Label Content="Periodo" HorizontalAlignment="Left" Margin="988,276,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <ComboBox x:Name="periodos" HorizontalAlignment="Left" Margin="1065,279,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="periodos_SelectionChanged"/>
+                    <Button x:Name="insertar" Content="Agregar" HorizontalAlignment="Left" Margin="696,505,0,0" VerticalAlignment="Top" Width="75" Click="insertar_Click"/>
+                    <Button x:Name="modifCuenta" Content="Modificar" HorizontalAlignment="Left" Margin="825,505,0,0" VerticalAlignment="Top" Width="75" Click="modifCuenta_Click" IsEnabled="False"/>
+                    <Button x:Name="eliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="953,505,0,0" VerticalAlignment="Top" Width="75" Click="eliminar_Click" IsEnabled="False"/>
+
+                    <DataGrid x:Name="datag" HorizontalAlignment="Left" Margin="81,52,0,0" VerticalAlignment="Top" Height="208" Width="1129" SelectionChanged="datag_SelectionChanged" IsReadOnly="True" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding idCuenta}"  Header="ID" Visibility="Collapsed"/>
+                            <DataGridTextColumn Binding="{Binding Cuenta}"  Header="Cuenta Contable"/>
+                            <DataGridTextColumn Binding="{Binding Nombre}"  Header="Nombre"/>
+                            <DataGridTextColumn Binding="{Binding Periodo}"  Header="Periodo" Visibility="Collapsed"/>
+                            <DataGridTextColumn Binding="{Binding SInicial}"  Header="Saldo Inicial"/>
+                            <DataGridTextColumn Binding="{Binding SFinal}"  Header="Saldo Final"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <ListView x:Name="listaCta"  HorizontalAlignment="Left" Height="173" Margin="81,344,0,0" VerticalAlignment="Top" Width="500" SelectionChanged="listaCta_SelectionChanged" KeyDown="listaCta_KeyDown">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="80" Header="Cuenta" DisplayMemberBinding="{Binding Cuenta}"/>
+                                <GridViewColumn Width="410" Header="Nombre"  DisplayMemberBinding="{Binding Nombre}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Expander Header="Tipo de Cuenta" Width="149" Margin="646,372,504,79.96" IsExpanded="True">
+                        <StackPanel Margin="10,4,0,0">
+                            <RadioButton x:Name="deudora" Margin="4" Content="Deudora" />
+                            <RadioButton x:Name="acredora" Margin="4" Content="Acredora" IsChecked="True" />
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="clasificacion1" Header="Clasificación" Width="149" Margin="842,372,308,79.96" IsExpanded="True">
+                        <StackPanel Margin="10,4,0,0">
+                            <RadioButton x:Name="mayor" Margin="4" Content="Acumuladora" IsChecked="True" />
+                            <RadioButton x:Name="detalle1" Margin="4" Content="Detalle" />
+                        </StackPanel>
+                    </Expander>
+                    <TextBox x:Name="detalle" HorizontalAlignment="Left" Height="23" Margin="811,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" IsEnabled="False"/>
+                    <Label Content="Siguiente Cuenta Contable" HorizontalAlignment="Left" Margin="634,277,0,0" VerticalAlignment="Top" Width="161" FontWeight="Bold"/>
+                </Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+            </Grid>
+            <Grid Margin="0,726,0,0" Width="Auto" Height="Auto" MinHeight="40.96" Background="#FF0B004D">
+                <!--PIE-->
+                <Label Content="SISTEMA DE ADMINISTRACIÓN CONTABLE" Foreground="White" FontFamily="Segoe UI" FontSize="14"></Label>
+                <Label HorizontalAlignment="Right" Content="Desarrollado por Universidad Tecnológica de San Juan del Río. 2012" Foreground="White" FontFamily="Segoe UI" FontSize="14"></Label>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>

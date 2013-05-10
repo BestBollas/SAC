@@ -1,0 +1,143 @@
+﻿<Page xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      mc:Ignorable="d"
+	x:Class="SacIntegrado.Poliza"
+	x:Name="Page"
+	WindowTitle="Polizas">
+
+    <ScrollViewer HorizontalScrollBarVisibility="auto" VerticalScrollBarVisibility="auto">
+        <Grid Width="Auto" Height="Auto">
+
+            <Grid Margin="0,-4,0,44.96" Width="Auto" MinWidth="1007.96" Height="Auto" MinHeight="554.96">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.102*"/>
+                    <RowDefinition Height="0.898*"/>
+                </Grid.RowDefinitions>
+                <!--CONTENIDO-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.383*"/>
+                    <ColumnDefinition Width="0.617*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/SacIntegrado;component/FondoSAC.png" />
+                </Grid.Background>
+                <!--<Image Height="98" Source="Logo.jpg" HorizontalAlignment="Right" Margin="0,44,54,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="285" />
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Web;component/FondoSAC.png" />
+                </Grid.Background>-->
+                <Grid Grid.ColumnSpan="2" Margin="27,8,30.966,74" Grid.Row="1" HorizontalAlignment="Center">
+                    <Label Content="Pólizas"  Margin="503.505,38.052,471.955,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
+                    <Label Content="Fecha:" HorizontalAlignment="Left" Margin="34.5,138.012,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Concepto:" HorizontalAlignment="Left" Margin="34.5,185.552,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <DatePicker x:Name="fecha" Margin="83.926,138.012,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <DataGrid x:Name="tablaPoliza" Margin="34,227,45,190" Height="234" SelectionChanged="tablaPoliza_SelectionChanged" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Movi}" Header="Num Mov" Width="75"/>
+                            <DataGridTextColumn Binding="{Binding Cuenta}" Header="Cuenta" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Nombre}" Header="Nombre" Width="270"/>
+                            <DataGridTextColumn Binding="{Binding Cargo}" Header="Cargo" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Abono}" Header="Abono" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding Referencia}" Header="Referencias" Width="200"/>
+                            <DataGridTextColumn Binding="{Binding Concepto}" Header="Concepto" Width="200"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label Content="Periodo Actual" Margin="0,86,240,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="93"/>
+                    <TextBox x:Name="periodoActual" Height="24" Margin="0,88,111,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" IsEnabled="False" HorizontalAlignment="Right" Width="120"/>
+                    <ComboBox x:Name="ComboConcepto" Margin="105.537,189.552,402.717,0" VerticalAlignment="Top" IsEditable="True"/>
+                    <Button x:Name="bGrabar" Content="Grabar" Margin="0,0,726,80" VerticalAlignment="Bottom" Click="bGrabar_Click" HorizontalAlignment="Right" Width="75"/>
+                    <Button x:Name="bBorrar" Content="Borrar" HorizontalAlignment="Right" Margin="0,0,378.711,80.108" Width="75" VerticalAlignment="Bottom"/>
+                    <TextBox x:Name="Navegador" Height="auto" Margin="34.5,91.052,406.717,0" TextWrapping="Wrap" Text="Navegador de polizas" VerticalAlignment="Top" MouseDoubleClick="clickNavegador" />
+                    <Button x:Name="primera" Content="&lt; Primera" Margin="0,136,296,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" FontWeight="Bold" Click="Primero_Click" />
+                    <Button x:Name="anterior" Content="&lt;&lt; Anterior" Margin="0,136,216,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" FontWeight="Bold" Click="Anterios_Click"/>
+                    <Button x:Name="siguiente" Content="Siguiente &gt;&gt;" Margin="0,136,122,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="89" FontWeight="Bold" Click="Siguiente_Click"/>
+                    <Button x:Name="ultima" Content="Ultima &gt;" Margin="0,136,45,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="75" FontWeight="Bold" Click="Ultimo_Click"/>
+                    <Label Content="Tipo:" HorizontalAlignment="Left" Margin="263.29,136.052,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <ComboBox x:Name="Ctipo" HorizontalAlignment="Left" Margin="305.76,140.052,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Ctipo_SelectionChanged"/>
+                    <Label Content="Numero:" HorizontalAlignment="Left" Margin="439.912,137.012,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="numero" Height="21.96" Margin="503.505,139.012,402.717,0" TextWrapping="Wrap" Text="Numero" VerticalAlignment="Top" IsReadOnly="True"/>
+                    <Button x:Name="bNueva" Content="Nuevo" HorizontalAlignment="Right" Margin="0,0,549,80" Width="75" VerticalAlignment="Bottom" Click="bNueva_Click"/>
+                    <!--Ventana Emergente INICIO-->
+                    <Popup Name="Partidas" StaysOpen="True" Placement="Center" MaxWidth="900" Margin="0,0,0,-19">
+                        <Border Height="350" Width="467" RenderTransformOrigin="0.669,0.5">
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <GradientStop Color="LightBlue" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Grid Margin="10" Background="White" RenderTransformOrigin="0.726,0.491">
+                                <Label Content="Cuenta" HorizontalAlignment="Left" Margin="46,78,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="cuenta" HorizontalAlignment="Left" Height="23" Margin="119,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyUp="cuenta_KeyUp"/>
+                                <Label Content="Cargo" HorizontalAlignment="Left" Margin="46,127,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="cargo" HorizontalAlignment="Left" Height="23" Margin="119,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0" LostFocus="cargo_LostFocus"/>
+                                <Label Content="Abono" HorizontalAlignment="Left" Margin="244,129,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="abono" HorizontalAlignment="Left" Height="23" Margin="295,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0" LostFocus="abono_LostFocus"/>
+                                <Label x:Name="nombre" Content="Nombre" HorizontalAlignment="Left" Margin="119,101,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.574,0.692"/>
+                                <Label Content="Movimiento" HorizontalAlignment="Left" Margin="46,47,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="movimiento" HorizontalAlignment="Left" Height="23" Margin="119,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0" IsReadOnly="True"/>
+                                <Label Content="Referencia" HorizontalAlignment="Left" Margin="48,181,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="referencia" HorizontalAlignment="Left" Height="23" Margin="119,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="1"/>
+                                <Label Content="Concepto" HorizontalAlignment="Left" Margin="48,225,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="concepto" HorizontalAlignment="Left" Height="44" Margin="119,228,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296"/>
+                                <Label Content="Sumas iguales" HorizontalAlignment="Left" Margin="46,287,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="sumCargo" HorizontalAlignment="Left" Height="23" Margin="142,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0"/>
+                                <TextBox x:Name="sumAbono" HorizontalAlignment="Left" Height="23" Margin="295,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="0"/>
+                                <Button x:Name="bAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="310,33,0,0" VerticalAlignment="Top" Width="75" Click="bAceptar_Click" />
+                                <Button x:Name="bSalir" Content="Salir" HorizontalAlignment="Left" Margin="310,78,0,0" VerticalAlignment="Top" Width="75" Click="bSalir_Click"/>
+                                <ListView x:Name="listaCta" HorizontalAlignment="Left" Height="181" Margin="118,127,0,0" VerticalAlignment="Top" Width="266" SelectionChanged="listaCta_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Width="410"  Header="Partida"  DisplayMemberBinding="{Binding Nombre}" />
+                                        </GridView>
+                                    </ListView.View>
+                                    <ListView Height="100" Width="100">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn/>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ListView>
+                            </Grid>
+                        </Border>
+                    </Popup>
+
+
+                    <!--Ventana Emergente FIN-->
+                </Grid>
+                <Button x:Name="nuevaPartida" Content="Nueva partida&#xD;&#xA;" Margin="0,187,279,0" Grid.Row="1" Grid.Column="1" RenderTransformOrigin="0.487,1.125" Click="Button_Click_1" Height="32" VerticalAlignment="Top" HorizontalAlignment="Right" Width="124"/>
+                <Label Content="Sumas iguales" Grid.Column="1" HorizontalAlignment="Left" Margin="251,487,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103"/>
+                <TextBox x:Name="totAbono" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="597,487,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="totCargo" Grid.Column="1" HorizontalAlignment="Left" Height="22" Margin="404,487,0,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120"/>
+
+
+            </Grid>
+
+            <Grid Margin="0,768.198,0,4" Width="Auto" Height="Auto" MinHeight="40.96">
+                <!--Background="#FF0800FF">-->
+                <!--PIE-->
+                <Grid.Background>
+                    <LinearGradientBrush EndPoint="0.345,1.357" StartPoint="0.345,0.048">
+                        <GradientStop Color="#FF0D006E" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Grid.Background>
+            </Grid>
+            <Grid Margin="0,5,1.966,769.158" HorizontalAlignment="Right" Width="465.796" d:LayoutOverrides="HorizontalAlignment">
+                <!--<Image Height="98" Source="Logo.jpg" HorizontalAlignment="Right" Margin="0,44,54,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="285" />
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Web;component/FondoSAC.png" />
+                </Grid.Background>-->
+                <Label Content="Bienvenido" Margin="0,3,246.796,0" VerticalAlignment="Top" FontWeight="Bold" HorizontalAlignment="Right" Width="84"/>
+                <Label Name="usuarioname" Content="Unknown" Margin="220,3,156.796,0" VerticalAlignment="Top" Foreground="#FF4B8BD8" Background="#0023199B" FontWeight="Bold" Width="100"/>
+                <Label Content="Cerrar Sesión" HorizontalAlignment="Right" Margin="0,3.04,49.252,0" VerticalAlignment="Top" FontWeight="Bold" MouseDown="menuCerrarSesion_Click" />
+                <Image HorizontalAlignment="Left" Height="38" Margin="425.796,-6,0,0" VerticalAlignment="Top" Width="40"  RenderTransformOrigin="1.789,0.303"/>
+            </Grid>
+            <Menu x:Name="menuPrincipal" VerticalAlignment="Top" Height="Auto" Margin="0,38,2,0">
+
+            </Menu>
+
+        </Grid>
+    </ScrollViewer>
+</Page>
